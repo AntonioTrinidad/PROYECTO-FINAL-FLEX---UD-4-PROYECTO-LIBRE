@@ -1,0 +1,280 @@
+* {
+  box-sizing: border-box;
+}
+
+/* INICIO PANTALLA DE CARGA */
+
+:root {
+  --navy: #0b1c2d;
+  --orange: #ff8c32;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}
+
+/* LOADER */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  animation: hide 3s forwards;
+  z-index: 9999;
+}
+
+/* RING */
+.ring {
+  width: 70px;
+  height: 70px;
+  border: 4px solid rgba(255,255,255,0.1);
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+  box-shadow: 0 0 20px rgba(255,140,50,0.6);
+}
+
+/* TEXTO */
+.loader span {
+  margin-top: 16px;
+  letter-spacing: 2px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ANIMACIONES */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes hide {
+  0%,90% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+
+/* FIN PANTALLA DE CARGA */
+
+/* MENU SUPERIOR*/
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--navy); 
+  align-items: center;
+  justify-content: space-between;
+}
+
+.carrito {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin-right: 15px;
+  font-size: 1.25em;
+  color: white;
+}
+
+.carrito img {
+  width: 40px;
+}
+
+.izquierda {
+  display: flex;
+  flex-wrap: wrap;
+  color: white; 
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.menu a:hover {
+  transition: color 0.3s ease;
+  color: var(--orange);
+}
+
+.titulo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 80px;
+}
+
+.titulo p:nth-of-type(2) {
+  color: var(--orange);
+}
+
+.titulo > img {
+  width: 100px;
+}
+
+/* TÍTULO AL LADO DE LAS BEBIDAS ENERGÉTICAS*/
+.titulo-apartado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.titulo-apartado h1 {
+  font-size: 2.5rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.titulo-apartado h1::after {
+  content: ""; /* LÍNEA DECORATIVA DEBAJO DEL TÍTULO */
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #ff8c32;
+  margin: 10px auto 0;
+}
+
+.titulo-apartado p {
+  font-style: italic;
+  color: #666;
+  max-width: 500px;
+}
+
+/* DISPOSICIÓN DE PRODUCTOS */
+
+.seccion-horizontal {
+  height: 300vh;
+  view-timeline-name: --seccion-scroll;
+}
+
+.sticky-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.productos {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 40px;
+  padding: 0 10vw 10vw 0;
+  
+  animation: mover-derecha-izquierda linear both;
+  animation-timeline: --seccion-scroll;
+  animation-range: contain 0% contain 100%;
+}
+
+.producto {
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 25px;
+  padding: 25px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 350px;
+  align-items: center;
+  
+}
+
+.producto img {
+  width: 100%;
+  height: auto;
+  max-width: 250px;
+  margin-bottom: 15px;
+}
+
+.producto > h2, 
+.producto > p {
+  text-align: center;
+  margin: 10px 0;
+} 
+
+.info-compra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  width: 100%;
+}
+
+.centrado {
+  justify-content: center;
+}
+
+.info-compra > button {
+  background-color: #ff8c32;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 8px 20px;  
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+
+
+.info-compra > button:hover {
+  transform: scale(1.1);
+  background-color: #ff8c32cc;
+}
+
+/* LA ANIMACIÓN */
+@keyframes mover-derecha-izquierda {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% + 100vw - 20vw)); } 
+}
+
+
+/* CONFIGURACION DEL FOOTER, AÑADIENDOLE FONDO, COLOR, TEXTO EN NEGRITA, ALINEADO DE TEXTO... */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--navy);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+/* ESTABLECEMOS EL ANCHO DE LAS IMAGENES PARA EVITAR QUE EL BORDE SEA MUY GRANDE*/
+
+footer img {
+    width: 30px;
+    height: 30px;
+}
